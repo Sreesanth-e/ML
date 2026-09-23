@@ -1,4 +1,4 @@
-""" 
+"""
 lab_utils_uni.py
     routines used in Course 1, Week2, labs1-3 dealing with single variables (univariate)
 """
@@ -8,8 +8,8 @@ from matplotlib.ticker import MaxNLocator
 from matplotlib.gridspec import GridSpec
 from matplotlib.colors import LinearSegmentedColormap
 from ipywidgets import interact
-from lab_utils_common import compute_cost
-from lab_utils_common import dlblue, dlorange, dldarkred, dlmagenta, dlpurple, dlcolors
+from C1.lab_utils_common import compute_cost
+from C1.lab_utils_common import dlblue, dlorange, dldarkred, dlmagenta, dlpurple, dlcolors
 
 plt.style.use('./deeplearning.mplstyle')
 n_bin = 5

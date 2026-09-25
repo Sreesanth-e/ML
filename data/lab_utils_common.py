@@ -18,7 +18,7 @@ np.set_printoptions(precision=2)
 dlc = dict(dlblue = '#0096ff', dlorange = '#FF9300', dldarkred='#C00000', dlmagenta='#FF40FF', dlpurple='#7030A0')
 dlblue = '#0096ff'; dlorange = '#FF9300'; dldarkred='#C00000'; dlmagenta='#FF40FF'; dlpurple='#7030A0'
 dlcolors = [dlblue, dlorange, dldarkred, dlmagenta, dlpurple]
-plt.style.use('./deeplearning.mplstyle')
+plt.style.use('../data/deeplearning.mplstyle')
 
 def sigmoid(z):
     """
@@ -294,3 +294,15 @@ def draw_vthresh(ax,x):
         arrowstyle='simple, head_width=5, head_length=10, tail_width=0.0',
     )
     ax.add_artist(f)
+
+def compute_cost(x, y, w, b):
+    """
+    Compute cost for univariate linear regression.
+    """
+    m = x.shape[0]
+
+    f_wb = w * x + b
+
+    cost = np.sum((f_wb - y) ** 2) / (2 * m)
+
+    return cost

@@ -79,11 +79,11 @@ def plt_layer(X,Y,W1,b1,norm_l):
     Y = Y.reshape(-1,)
     fig,ax = plt.subplots(1,W1.shape[1], figsize=(16,4))
     for i in range(W1.shape[1]):
-        layerf= lambda x : sigmoid(np.dot(norm_l(x),W1[:,i]) + b1[i])
+        layerf = lambda x : sigmoid(np.dot(np.array(norm_l(x)), W1[:,i]) + b1[i])[0]
         plt_prob(ax[i], layerf)
         ax[i].scatter(X[Y==1,0],X[Y==1,1], s=70, marker='x', c='red', label="Good Roast" )
         ax[i].scatter(X[Y==0,0],X[Y==0,1], s=100, marker='o', facecolors='none',
-                   edgecolors=dlc["dldarkblue"],linewidth=1,  label="Bad Roast")
+                   edgecolors=dlc["dlblue"],linewidth=1,  label="Bad Roast")
         tr = np.linspace(175,260,50)
         ax[i].plot(tr, (-3/85) * tr + 21, color=dlc["dlpurple"],linewidth=2)
         ax[i].axhline(y= 12, color=dlc["dlpurple"], linewidth=2)
@@ -137,7 +137,8 @@ def plt_output_unit(W,b):
         for j in range(steps):
             for k in range(steps):
                 v = np.array([x[i,j,k],y[i,j,k],z[i,j,k]])
-                d[i,j,k] = tf.keras.activations.sigmoid(np.dot(v,W[:,0])+b).numpy()
+
+                d[i,j,k] = tf.keras.activations.sigmoid(np.dot(v,W[:,0])+b[0]).numpy()
     pcm = ax.scatter(x, y, z, c=d, cmap=cmap, alpha = 1 )
     ax.set_xlabel("unit 0");
     ax.set_ylabel("unit 1");
